@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gs-front-climate-dashboard"
+version = "0.1.0"
+description = "Intelligent monitoring dashboard for climate events and environmental risks."
+readme = "README.md"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q --disable-warnings --maxfail=1"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [".venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+no_implicit_optional = true
+check_untyped_defs = true
+strict_optional = true
+exclude = ["tests/fixtures"]

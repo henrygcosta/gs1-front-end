@@ -1,0 +1,17 @@
+/* Custom CSS tweaks for premium visual polish */
+
+:root{
+	--gs-accent: #0f766e;
+	--gs-accent-2: #0ea5e9;
+}
+
+.stSidebar button[role="button"]{
+	border-radius: 10px !important;
+	padding: 0.6rem 0.8rem !important;
+}
+
+.gs-hero img{ box-shadow: 0 8px 24px rgba(2,6,23,0.12); }
+
+.stApp .stAlert { border-radius: 12px; }
+
+.stButton>button{ border-radius: 8px; }
