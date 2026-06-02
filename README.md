@@ -1,4 +1,4 @@
-# GS Front - Centro Inteligente de Monitoramento Climático
+# GS 2026.1 Front End - Centro de Monitoramento Climático e Gestão de Riscos Ambientais
 
 Solução Streamlit para monitoramento operacional de eventos climáticos, leitura espacial de risco e apoio à decisão com validação humana.
 
@@ -169,7 +169,7 @@ pytest tests/unit tests/integration tests/e2e -q
 - Dashboard interativo
 - Storytelling analítico
 - Docker
-- CI/CD com GitHub Actions para lint, type check, testes e build de imagem
+- Integração contínua (CI) com GitHub Actions para lint, type check, testes e validação de build Docker.
 
 ## Limitações Atuais
 
