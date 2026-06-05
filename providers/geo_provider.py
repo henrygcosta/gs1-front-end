@@ -6,12 +6,11 @@ implementations should return a pandas.DataFrame with region metadata.
 
 from __future__ import annotations
 
-import pandas as pd
 import httpx
+import pandas as pd
 
-from utils.logger import get_logger
 from utils.exceptions import DataProviderError
-
+from utils.logger import get_logger
 
 LOGGER = get_logger(__name__)
 

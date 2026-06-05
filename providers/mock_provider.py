@@ -8,16 +8,14 @@ from __future__ import annotations
 
 from datetime import timedelta
 from hashlib import sha1
-import logging
 
 import numpy as np
 import pandas as pd
 import streamlit as st
 
-from utils.time_utils import utc_now
-from utils.logger import get_logger
 from utils.exceptions import DataProviderError
-
+from utils.logger import get_logger
+from utils.time_utils import utc_now
 
 LOGGER = get_logger(__name__)
 

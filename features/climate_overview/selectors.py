@@ -4,7 +4,15 @@ from __future__ import annotations
 
 import pandas as pd
 
-from features.common import FeatureContext, MetricCard, NarrativeBlock, executive_headline, narrative_blocks_from_findings, top_findings, top_records
+from features.common import (
+	FeatureContext,
+	MetricCard,
+	NarrativeBlock,
+	executive_headline,
+	narrative_blocks_from_findings,
+	top_findings,
+	top_records,
+)
 
 
 def select_kpis(context: FeatureContext) -> list[MetricCard]:

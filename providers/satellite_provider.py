@@ -6,11 +6,8 @@ Currently a placeholder to keep the providers surface consistent.
 from __future__ import annotations
 
 import pandas as pd
-import httpx
 
 from utils.logger import get_logger
-from utils.exceptions import DataProviderError
-
 
 LOGGER = get_logger(__name__)
 

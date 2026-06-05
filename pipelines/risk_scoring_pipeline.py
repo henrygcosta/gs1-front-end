@@ -9,7 +9,6 @@ from pipelines.common import dataframe_cache_key, recommendation_for_event, risk
 from utils.exceptions import PipelineError
 from utils.logger import get_logger
 
-
 LOGGER = get_logger(__name__)
 
 

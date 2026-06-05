@@ -23,5 +23,5 @@ def render_risk_trend(enriched_events: pd.DataFrame, *, key: str) -> None:
 		markers=True,
 		labels={"date": "Data", "avg_risk_score": "Risco medio"},
 	)
-	fig.update_layout(margin=dict(l=12, r=12, t=18, b=12), title_text=None)
+	fig.update_layout(margin={"l": 12, "r": 12, "t": 18, "b": 12}, title_text=None)
 	render_plotly_panel(title="Evolucao do risco medio", fig=fig, key=key, help_text="Serie temporal do risco medio consolidado", height=340)

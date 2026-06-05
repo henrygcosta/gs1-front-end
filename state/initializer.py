@@ -7,11 +7,18 @@ from uuid import uuid4
 
 import streamlit as st
 
-from state.models import AlertState, CacheState, DashboardFilterState, LoadingState, NavigationState, ThresholdState, UserPreferencesState
+from state.models import (
+	AlertState,
+	CacheState,
+	DashboardFilterState,
+	LoadingState,
+	NavigationState,
+	ThresholdState,
+	UserPreferencesState,
+)
+from state.persistence import init_db
 from state.session_keys import SessionKey
 from utils.config import get_settings
-from state.persistence import init_db
-
 
 SUPPORTED_EVENT_TYPES = ["Flood", "Storm", "Heatwave", "Landslide", "Queimada", "Qualidade do Ar"]
 LEGACY_EVENT_TYPES = ["Flood", "Storm", "Heatwave"]

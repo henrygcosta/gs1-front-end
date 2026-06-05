@@ -6,9 +6,21 @@ import streamlit as st
 
 from features.human_feedback.use_cases import execute_human_feedback
 from state.actions import record_alert_moderation
-from state.selectors import get_approved_alerts, get_dismissed_alerts, get_feedback_history, get_feedback_revision, get_loading_flags, get_reviewed_alerts, get_sent_alerts
+from state.selectors import (
+	get_approved_alerts,
+	get_dismissed_alerts,
+	get_feedback_history,
+	get_feedback_revision,
+	get_loading_flags,
+	get_reviewed_alerts,
+	get_sent_alerts,
+)
 from state.view_model import build_dashboard_filter_view_model
-from ui.charts import render_alert_spatial_distribution, render_operational_bars, render_operational_indicators
+from ui.charts import (
+	render_alert_spatial_distribution,
+	render_operational_bars,
+	render_operational_indicators,
+)
 from ui.components.alert_card import render_alert_card
 from ui.components.empty_state import render_empty_state
 from ui.components.loading_block import render_loading_placeholder

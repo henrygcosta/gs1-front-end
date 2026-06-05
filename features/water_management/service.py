@@ -6,7 +6,12 @@ import streamlit as st
 
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 from features.water_management.domain import WaterManagementFeature
-from features.water_management.selectors import select_drought_risk, select_narratives, select_reservoirs, select_water_levels
+from features.water_management.selectors import (
+	select_drought_risk,
+	select_narratives,
+	select_reservoirs,
+	select_water_levels,
+)
 
 
 @st.cache_data(show_spinner=False, hash_funcs=FEATURE_CACHE_KWARGS)

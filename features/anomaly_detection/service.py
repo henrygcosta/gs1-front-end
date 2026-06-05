@@ -5,7 +5,12 @@ from __future__ import annotations
 import streamlit as st
 
 from features.anomaly_detection.domain import AnomalyDetectionFeature
-from features.anomaly_detection.selectors import select_confidence_bands, select_low_confidence, select_recommendations, select_text_analysis
+from features.anomaly_detection.selectors import (
+	select_confidence_bands,
+	select_low_confidence,
+	select_recommendations,
+	select_text_analysis,
+)
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 
 

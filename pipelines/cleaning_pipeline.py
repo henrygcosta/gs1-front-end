@@ -9,7 +9,6 @@ from pipelines.common import clamp_series, dataframe_cache_key, ensure_columns
 from utils.exceptions import PipelineError
 from utils.logger import get_logger
 
-
 LOGGER = get_logger(__name__)
 
 REQUIRED_COLUMNS = [

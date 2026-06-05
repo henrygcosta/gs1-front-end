@@ -14,7 +14,6 @@ import pandas as pd
 
 from utils.exceptions import PipelineError
 
-
 SEVERITY_BANDS = (
 	(0.25, "baixa"),
 	(0.50, "moderada"),

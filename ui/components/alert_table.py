@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import pandas as pd
-import streamlit as st
 
 from ui.components.alert_card import render_alert_card
 from ui.components.empty_state import render_empty_state

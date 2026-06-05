@@ -8,7 +8,6 @@ from typing import TypeVar
 
 import streamlit as st
 
-
 T = TypeVar("T")
 
 

@@ -9,7 +9,6 @@ import streamlit as st
 
 from state.view_model import DashboardFilterViewModel
 
-
 FilterSubmitCallback = Callable[[str, list[str], int, tuple[object, object] | None, str, float], None]
 
 

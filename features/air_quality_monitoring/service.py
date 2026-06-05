@@ -5,7 +5,12 @@ from __future__ import annotations
 import streamlit as st
 
 from features.air_quality_monitoring.domain import AirQualityMonitoringFeature
-from features.air_quality_monitoring.selectors import select_indices, select_narratives, select_regional_comparisons, select_trend
+from features.air_quality_monitoring.selectors import (
+	select_indices,
+	select_narratives,
+	select_regional_comparisons,
+	select_trend,
+)
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 
 

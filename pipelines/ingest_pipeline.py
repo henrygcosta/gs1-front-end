@@ -14,7 +14,6 @@ from providers.provider_factory import get_provider_container
 from utils.exceptions import PipelineError
 from utils.logger import get_logger
 
-
 LOGGER = get_logger(__name__)
 
 BASE_COLUMNS: list[str] = [

@@ -17,12 +17,11 @@ from pipelines.common import (
 	clamp_series,
 	dataframe_cache_key,
 	insight_for_row,
-	risk_alert_level,
 	recommendation_for_event,
+	risk_alert_level,
 )
 from utils.exceptions import PipelineError
 from utils.logger import get_logger
-
 
 LOGGER = get_logger(__name__)
 RISK_WEIGHTS = RiskWeights()

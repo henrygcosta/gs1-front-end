@@ -4,7 +4,13 @@ from __future__ import annotations
 
 import pandas as pd
 
-from features.common import FeatureContext, NarrativeBlock, narrative_blocks_from_findings, top_findings, top_records
+from features.common import (
+	FeatureContext,
+	NarrativeBlock,
+	narrative_blocks_from_findings,
+	top_findings,
+	top_records,
+)
 from state.selectors import get_approved_alerts, get_dismissed_alerts, get_reviewed_alerts
 
 

@@ -5,7 +5,13 @@ from __future__ import annotations
 import streamlit as st
 
 from features.alerts_center.domain import AlertsCenterFeature
-from features.alerts_center.selectors import select_ai_insights, select_critical_alerts, select_history, select_moderation_stats, select_recommendations
+from features.alerts_center.selectors import (
+	select_ai_insights,
+	select_critical_alerts,
+	select_history,
+	select_moderation_stats,
+	select_recommendations,
+)
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 
 

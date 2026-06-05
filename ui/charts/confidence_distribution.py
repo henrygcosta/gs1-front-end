@@ -16,5 +16,5 @@ def render_confidence_distribution(enriched_events: pd.DataFrame, *, key: str) -
 		nbins=20,
 		labels={"confidence": "Confianca"},
 	)
-	fig.update_layout(margin=dict(l=12, r=12, t=18, b=12), title_text=None)
+	fig.update_layout(margin={"l": 12, "r": 12, "t": 18, "b": 12}, title_text=None)
 	render_plotly_panel(title="Distribuicao de confianca dos eventos", fig=fig, key=key, help_text="Leitura das incertezas do recorte atual", height=340)

@@ -1,9 +1,9 @@
-from __future__ import annotations
-
 """Provider contracts (ports) for external and mock data sources.
 
 Define Protocols to decouple consumers from concrete implementations.
 """
+
+from __future__ import annotations
 
 from typing import Protocol
 

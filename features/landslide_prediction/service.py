@@ -6,7 +6,13 @@ import streamlit as st
 
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 from features.landslide_prediction.domain import LandslidePredictionFeature
-from features.landslide_prediction.selectors import select_emergency_priority, select_narratives, select_rainfall_correlation, select_risk_index, select_vulnerable_areas
+from features.landslide_prediction.selectors import (
+	select_emergency_priority,
+	select_narratives,
+	select_rainfall_correlation,
+	select_risk_index,
+	select_vulnerable_areas,
+)
 
 
 @st.cache_data(show_spinner=False, hash_funcs=FEATURE_CACHE_KWARGS)

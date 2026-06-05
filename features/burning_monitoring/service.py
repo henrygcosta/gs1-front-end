@@ -5,7 +5,12 @@ from __future__ import annotations
 import streamlit as st
 
 from features.burning_monitoring.domain import BurningMonitoringFeature
-from features.burning_monitoring.selectors import select_alerts, select_fire_events, select_narratives, select_temporal_evolution
+from features.burning_monitoring.selectors import (
+	select_alerts,
+	select_fire_events,
+	select_narratives,
+	select_temporal_evolution,
+)
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 
 

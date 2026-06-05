@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import streamlit as st
-
 from ui.components.footer import render_footer
 from ui.components.header import render_header
 from ui.copy.labels import APP_SUBTITLE, APP_TITLE

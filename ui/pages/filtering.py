@@ -5,12 +5,10 @@ from __future__ import annotations
 import pandas as pd
 import streamlit as st
 
-from features.common import FeatureContext
+from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 from pipelines.alerting_pipeline import build_alert_feed
 from pipelines.risk_scoring_pipeline import run_risk_scoring_pipeline
 from state.view_model import DashboardFilterViewModel
-from features.common import FEATURE_CACHE_KWARGS
-
 
 RISK_LEVEL_THRESHOLDS: dict[str, float] = {
 	"all": 0.0,

@@ -4,8 +4,19 @@ from __future__ import annotations
 
 import pandas as pd
 
-from features.common import FeatureContext, NarrativeBlock, narrative_blocks_from_findings, top_findings
-from state.selectors import get_approved_alerts, get_dismissed_alerts, get_feedback_history, get_reviewed_alerts, get_sent_alerts
+from features.common import (
+	FeatureContext,
+	NarrativeBlock,
+	narrative_blocks_from_findings,
+	top_findings,
+)
+from state.selectors import (
+	get_approved_alerts,
+	get_dismissed_alerts,
+	get_feedback_history,
+	get_reviewed_alerts,
+	get_sent_alerts,
+)
 
 
 def select_queue(context: FeatureContext | None = None) -> pd.DataFrame:

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-
 RISK_COLOR_MAP: dict[str, str] = {
 	"info": "#0F4C5C",
 	"neutral": "#475569",

@@ -6,7 +6,12 @@ import streamlit as st
 
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 from features.human_feedback.domain import HumanFeedbackFeature
-from features.human_feedback.selectors import select_history, select_moderation_stats, select_narratives, select_queue
+from features.human_feedback.selectors import (
+	select_history,
+	select_moderation_stats,
+	select_narratives,
+	select_queue,
+)
 
 
 @st.cache_data(show_spinner=False, hash_funcs=FEATURE_CACHE_KWARGS)

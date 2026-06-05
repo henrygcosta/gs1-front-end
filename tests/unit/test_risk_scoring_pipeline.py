@@ -11,7 +11,7 @@ def test_risk_scoring_pipeline_builds_expected_summary(sample_enriched_frame: pd
 	summary = run_risk_scoring_pipeline(sample_enriched_frame)
 
 	assert set(summary["event_type"]) == {"Flood", "Queimada", "Qualidade do Ar"}
-	assert set(["total_events", "avg_risk_score", "priority_rank", "alert_title"]).issubset(summary.columns)
+	assert {"total_events", "avg_risk_score", "priority_rank", "alert_title"}.issubset(summary.columns)
 	assert summary.loc[summary["event_type"] == "Flood", "alert_level"].iloc[0] in {"alto", "critico", "moderado"}
 	assert sorted(summary["priority_rank"].tolist()) == [1, 2, 3]
 	assert summary.iloc[0]["avg_risk_score"] >= summary.iloc[-1]["avg_risk_score"]

@@ -67,6 +67,5 @@ def render_sidebar() -> None:
 
 		from utils.config import get_settings
 
-		if get_settings().enable_cache_invalidation_button:
-			if st.button("Invalidar caches e recarregar"):
+		if get_settings().enable_cache_invalidation_button and st.button("Invalidar caches e recarregar"):
 				invalidate_pipeline_run()

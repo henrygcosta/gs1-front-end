@@ -1,31 +1,35 @@
-"""Provider factory and dependency composition."""
+"""Provider factory and dependency composition.
 
-from __future__ import annotations
-
-"""Factory to compose provider implementations.
+Factory to compose provider implementations.
 
 Returns a `ProviderContainer` with concrete provider instances. Uses
 `st.cache_resource` to keep long-lived clients and providers in memory.
 """
+
+from __future__ import annotations
 
 from dataclasses import dataclass
 
 import httpx
 import streamlit as st
 
-from providers.contracts import ClimateDataProvider, GeoDataProvider, FireDataProvider, AirQualityProvider
-from providers.mock_provider import (
-	MockClimateProvider,
-	MockGeoProvider,
-	MockFireProvider,
-	MockAirQualityProvider,
-)
 from providers.climate_provider import ClimateApiProvider
+from providers.contracts import (
+	AirQualityProvider,
+	ClimateDataProvider,
+	FireDataProvider,
+	GeoDataProvider,
+)
 from providers.geo_provider import GeoApiProvider
+from providers.mock_provider import (
+	MockAirQualityProvider,
+	MockClimateProvider,
+	MockFireProvider,
+	MockGeoProvider,
+)
 from providers.satellite_provider import SatelliteApiProvider
 from utils.config import get_settings
 from utils.logger import get_logger
-
 
 LOGGER = get_logger(__name__)
 

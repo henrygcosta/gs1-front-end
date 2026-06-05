@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-
 APP_TITLE = "Centro Inteligente de Monitoramento Climatico"
 APP_SUBTITLE = "Prevenção de desastres naturais com analise espacial e temporal"
 

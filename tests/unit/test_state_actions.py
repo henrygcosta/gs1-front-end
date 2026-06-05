@@ -2,8 +2,21 @@
 
 from __future__ import annotations
 
-from state.actions import dismiss_alert, record_alert_moderation, review_alert, reset_filters, set_selected_event_types
-from state.selectors import get_approved_alerts, get_dismissed_alerts, get_feedback_history, get_filters_state, get_reviewed_alerts, get_sent_alerts
+from state.actions import (
+	dismiss_alert,
+	record_alert_moderation,
+	reset_filters,
+	review_alert,
+	set_selected_event_types,
+)
+from state.selectors import (
+	get_approved_alerts,
+	get_dismissed_alerts,
+	get_feedback_history,
+	get_filters_state,
+	get_reviewed_alerts,
+	get_sent_alerts,
+)
 
 
 def test_record_alert_moderation_persists_history_and_sent_alert(sample_alert_feed) -> None:

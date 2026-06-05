@@ -10,7 +10,12 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from pipelines.common import dataframe_cache_key, insight_for_row, operational_headline, recommendation_for_event, risk_alert_level
+from pipelines.common import (
+	dataframe_cache_key,
+	insight_for_row,
+	operational_headline,
+	risk_alert_level,
+)
 
 
 @dataclass(frozen=True, slots=True)

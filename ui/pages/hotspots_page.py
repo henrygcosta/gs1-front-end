@@ -6,8 +6,8 @@ import pandas as pd
 import streamlit as st
 
 from state.view_model import build_dashboard_filter_view_model
-from ui.components.alert_card import render_alert_card
 from ui.charts import render_geographic_risk_map, render_risk_trend
+from ui.components.alert_card import render_alert_card
 from ui.pages.context_loader import load_visible_operational_context
 
 

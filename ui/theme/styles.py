@@ -422,7 +422,7 @@ def apply_global_styles() -> None:
 
 	# Load optional custom CSS file from assets/custom.css to allow local tweaks
 	try:
-		with open("assets/custom.css", "r", encoding="utf-8") as fh:
+		with open("assets/custom.css", encoding="utf-8") as fh:
 			custom_css = fh.read()
 			if custom_css.strip():
 				st.markdown(f"<style>{custom_css}</style>", unsafe_allow_html=True)

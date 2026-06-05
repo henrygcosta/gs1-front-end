@@ -6,7 +6,14 @@ import streamlit as st
 
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 from features.geospatial_center.domain import GeospatialCenterFeature
-from features.geospatial_center.selectors import select_alert_distribution, select_critical_regions, select_heatmaps, select_interactive_maps, select_narratives, select_spatial_risk
+from features.geospatial_center.selectors import (
+	select_alert_distribution,
+	select_critical_regions,
+	select_heatmaps,
+	select_interactive_maps,
+	select_narratives,
+	select_spatial_risk,
+)
 
 
 @st.cache_data(show_spinner=False, hash_funcs=FEATURE_CACHE_KWARGS)

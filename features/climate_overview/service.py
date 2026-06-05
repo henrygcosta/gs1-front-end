@@ -2,11 +2,16 @@
 
 from __future__ import annotations
 
-import pandas as pd
 import streamlit as st
 
 from features.climate_overview.domain import ClimateOverviewFeature
-from features.climate_overview.selectors import select_critical_indicators, select_executive_summary, select_kpis, select_narratives, select_panorama
+from features.climate_overview.selectors import (
+	select_critical_indicators,
+	select_executive_summary,
+	select_kpis,
+	select_narratives,
+	select_panorama,
+)
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext, top_findings
 
 

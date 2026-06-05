@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-
 INTRO_TEXT = (
 	"Esta central analisa dados geoespaciais e temporais para antecipar riscos "
 	"climaticos, apoiar a priorizacao de areas criticas e orientar respostas operacionais."

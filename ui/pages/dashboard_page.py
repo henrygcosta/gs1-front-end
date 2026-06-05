@@ -4,14 +4,10 @@ from __future__ import annotations
 
 import streamlit as st
 
-from features.climate_overview.use_cases import execute_climate_overview
 from features.climate_overview.dto import ClimateOverviewRequest
+from features.climate_overview.use_cases import execute_climate_overview
 from state.selectors import get_filters_state
 from state.view_model import build_dashboard_filter_view_model
-from ui.components.notification_banner import render_notification_banner
-from ui.components.kpi_card import render_kpi
-from ui.components.loading_block import loading_block
-from ui.components.timeline_story import render_timeline_story
 from ui.charts import (
 	render_air_quality_index,
 	render_climate_heatmap,
@@ -19,15 +15,19 @@ from ui.charts import (
 	render_fire_intensity,
 	render_flood_forecast,
 	render_geographic_risk_map,
-		render_geospatial_heatmap,
+	render_geospatial_heatmap,
 	render_landslide_forecast,
 	render_operational_bars,
 	render_operational_indicators,
 	render_rainfall_accumulation,
 	render_risk_distribution,
-		render_scatter_geo,
+	render_scatter_geo,
 	render_temporal_disaster_evolution,
 )
+from ui.components.kpi_card import render_kpi
+from ui.components.loading_block import loading_block
+from ui.components.notification_banner import render_notification_banner
+from ui.components.timeline_story import render_timeline_story
 from ui.pages.context_loader import load_visible_operational_context
 
 

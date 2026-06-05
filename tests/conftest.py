@@ -185,8 +185,8 @@ def isolated_streamlit_state(monkeypatch: pytest.MonkeyPatch) -> dict[str, objec
 @pytest.fixture(autouse=True)
 def clear_cached_callables() -> None:
 	"""Clear Streamlit and functools caches used by the application."""
-	from features.alerts_center.service import build_alerts_center
 	from features.air_quality_monitoring.service import build_air_quality_monitoring
+	from features.alerts_center.service import build_alerts_center
 	from features.anomaly_detection.service import build_anomaly_detection
 	from features.burning_monitoring.service import build_burning_monitoring
 	from features.climate_overview.service import build_climate_overview
@@ -196,7 +196,13 @@ def clear_cached_callables() -> None:
 	from features.landslide_prediction.service import build_landslide_prediction
 	from features.risk_hotspots.service import build_risk_hotspots
 	from features.water_management.service import build_water_management
-	from pipelines import alerting_pipeline, cleaning_pipeline, enrichment_pipeline, ingest_pipeline, risk_scoring_pipeline
+	from pipelines import (
+		alerting_pipeline,
+		cleaning_pipeline,
+		enrichment_pipeline,
+		ingest_pipeline,
+		risk_scoring_pipeline,
+	)
 	from providers import provider_factory
 	from ui.pages import context_loader, filtering
 

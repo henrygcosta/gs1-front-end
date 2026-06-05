@@ -14,7 +14,6 @@ from pipelines.common import operational_headline
 from utils.exceptions import PipelineError
 from utils.logger import get_logger
 
-
 LOGGER = get_logger(__name__)
 
 

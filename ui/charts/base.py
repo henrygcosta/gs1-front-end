@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -21,22 +19,22 @@ def render_plotly_panel(*, title: str, fig: go.Figure, key: str, help_text: str 
 	template = "plotly_dark" if is_dark else "plotly_white"
 	fig.update_layout(
 		template=template,
-		margin=dict(l=12, r=12, t=44, b=12),
+		margin={"l": 12, "r": 12, "t": 44, "b": 12},
 		autosize=True,
 		paper_bgcolor="rgba(0,0,0,0)",
 		plot_bgcolor="rgba(0,0,0,0)",
-		font=dict(color=text_color, family="Manrope, Aptos, Segoe UI, sans-serif"),
-		title=dict(text="", font=dict(color=text_color)),
-		legend=dict(
-			font=dict(color=text_color),
-			title_font=dict(color=text_color),
-			bgcolor=legend_bg,
-			bordercolor=legend_border,
-			borderwidth=1,
-			orientation="h",
-			itemclick="toggle",
-			itemdoubleclick="toggleothers",
-		),
+		font={"color": text_color, "family": "Manrope, Aptos, Segoe UI, sans-serif"},
+		title={"text": "", "font": {"color": text_color}},
+		legend={
+			"font": {"color": text_color},
+			"title_font": {"color": text_color},
+			"bgcolor": legend_bg,
+			"bordercolor": legend_border,
+			"borderwidth": 1,
+			"orientation": "h",
+			"itemclick": "toggle",
+			"itemdoubleclick": "toggleothers",
+		},
 		legend_font_color=text_color,
 		legend_title_font_color=text_color,
 	)

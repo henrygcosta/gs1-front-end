@@ -11,7 +11,6 @@ from pipelines.common import dataframe_cache_key, recommendation_for_event, risk
 from utils.exceptions import PipelineError
 from utils.logger import get_logger
 
-
 LOGGER = get_logger(__name__)
 
 
@@ -25,8 +24,10 @@ class AlertThresholds:
 
 
 @st.cache_data(show_spinner=False, ttl=300, hash_funcs={pd.DataFrame: dataframe_cache_key})
-def build_alert_feed(enriched_events: pd.DataFrame, thresholds: AlertThresholds = AlertThresholds()) -> pd.DataFrame:
+def build_alert_feed(enriched_events: pd.DataFrame, thresholds: AlertThresholds | None = None) -> pd.DataFrame:
 	"""Build a semantic alert feed from the enriched event stream."""
+	if thresholds is None:
+		thresholds = AlertThresholds()
 	try:
 		if enriched_events.empty:
 			return pd.DataFrame(

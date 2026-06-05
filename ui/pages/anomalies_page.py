@@ -4,10 +4,13 @@ from __future__ import annotations
 
 import streamlit as st
 
-from ui.components.notification_banner import render_notification_banner
-from ui.charts.confidence_distribution import render_confidence_distribution
-from ui.charts import render_operational_indicators, render_risk_distribution, render_temporal_disaster_evolution
 from state.view_model import build_dashboard_filter_view_model
+from ui.charts import (
+	render_operational_indicators,
+	render_risk_distribution,
+	render_temporal_disaster_evolution,
+)
+from ui.charts.confidence_distribution import render_confidence_distribution
 from ui.pages.context_loader import load_visible_operational_context
 
 

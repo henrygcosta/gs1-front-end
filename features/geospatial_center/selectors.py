@@ -4,7 +4,12 @@ from __future__ import annotations
 
 import pandas as pd
 
-from features.common import FeatureContext, narrative_blocks_from_findings, top_findings, top_records
+from features.common import (
+	FeatureContext,
+	narrative_blocks_from_findings,
+	top_findings,
+	top_records,
+)
 
 
 def select_interactive_maps(context: FeatureContext) -> pd.DataFrame:

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from ui.copy.labels import TAB_FEEDBACK, TAB_HOTSPOTS, TAB_OVERVIEW, TAB_ANOMALIES
+from ui.copy.labels import TAB_ANOMALIES, TAB_FEEDBACK, TAB_HOTSPOTS, TAB_OVERVIEW
 
 
 def render_main_tabs() -> tuple[st.delta_generator.DeltaGenerator, ...]:

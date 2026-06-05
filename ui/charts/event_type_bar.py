@@ -17,5 +17,5 @@ def render_event_type_bar(risk_summary: pd.DataFrame, *, key: str) -> None:
 		color="avg_risk_score",
 		labels={"event_type": "Tipo de evento", "avg_risk_score": "Risco medio"},
 	)
-	fig.update_layout(margin=dict(l=12, r=12, t=18, b=12), title_text=None)
+	fig.update_layout(margin={"l": 12, "r": 12, "t": 18, "b": 12}, title_text=None)
 	render_plotly_panel(title="Risco medio por tipo de evento", fig=fig, key=key, help_text="Comparativo operacional por classe de evento", height=340)

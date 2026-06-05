@@ -6,7 +6,13 @@ import streamlit as st
 
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 from features.risk_hotspots.domain import RiskHotspotsFeature
-from features.risk_hotspots.selectors import select_alert_distribution, select_heatmap, select_map_points, select_narratives, select_regional_summary
+from features.risk_hotspots.selectors import (
+	select_alert_distribution,
+	select_heatmap,
+	select_map_points,
+	select_narratives,
+	select_regional_summary,
+)
 
 
 @st.cache_data(show_spinner=False, hash_funcs=FEATURE_CACHE_KWARGS)

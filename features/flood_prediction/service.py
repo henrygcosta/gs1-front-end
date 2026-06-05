@@ -6,7 +6,13 @@ import streamlit as st
 
 from features.common import FEATURE_CACHE_KWARGS, FeatureContext
 from features.flood_prediction.domain import FloodPredictionFeature
-from features.flood_prediction.selectors import select_high_risk_regions, select_narratives, select_preventive_alerts, select_severity, select_temporal_evolution
+from features.flood_prediction.selectors import (
+	select_high_risk_regions,
+	select_narratives,
+	select_preventive_alerts,
+	select_severity,
+	select_temporal_evolution,
+)
 
 
 @st.cache_data(show_spinner=False, hash_funcs=FEATURE_CACHE_KWARGS)

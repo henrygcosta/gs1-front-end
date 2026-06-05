@@ -9,7 +9,6 @@ from plotly.subplots import make_subplots
 
 from ui.charts.base import render_plotly_panel
 
-
 SEMANTIC_COLORS = {
 	"critical": "#b91c1c",
 	"high": "#ea580c",
@@ -25,7 +24,7 @@ DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
 def _empty_figure(title: str, message: str) -> go.Figure:
 	"""Create a chart placeholder when a dataset is empty."""
 	fig = go.Figure()
-	fig.add_annotation(text=message, x=0.5, y=0.5, showarrow=False, font=dict(size=14, color="#475569"))
+	fig.add_annotation(text=message, x=0.5, y=0.5, showarrow=False, font={"size": 14, "color": "#475569"})
 	fig.update_xaxes(visible=False)
 	fig.update_yaxes(visible=False)
 	fig.update_layout(title=title)
@@ -80,8 +79,8 @@ def render_climate_time_series(enriched_events: pd.DataFrame, *, key: str) -> No
 		.sort_values("date_bucket")
 	)
 	fig = go.Figure()
-	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_risk_score"], mode="lines+markers", name="Risco medio", line=dict(color=SEMANTIC_COLORS["high"], width=3), hovertemplate="Data %{x|%d/%m/%Y}<br>Risco %{y:.2f}<extra></extra>"))
-	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_severity"], mode="lines+markers", name="Severidade media", line=dict(color=SEMANTIC_COLORS["info"], width=2, dash="dot"), hovertemplate="Data %{x|%d/%m/%Y}<br>Severidade %{y:.2f}<extra></extra>"))
+	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_risk_score"], mode="lines+markers", name="Risco medio", line={"color": SEMANTIC_COLORS["high"], "width": 3}, hovertemplate="Data %{x|%d/%m/%Y}<br>Risco %{y:.2f}<extra></extra>"))
+	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_severity"], mode="lines+markers", name="Severidade media", line={"color": SEMANTIC_COLORS["info"], "width": 2, "dash": "dot"}, hovertemplate="Data %{x|%d/%m/%Y}<br>Severidade %{y:.2f}<extra></extra>"))
 	fig.update_layout(title="Evolucao temporal climatica", xaxis_title="Data", yaxis_title="Escala normalizada", hovermode="x unified", legend_title_text="")
 	fig.update_xaxes(rangeslider_visible=True)
 	render_plotly_panel(title="Serie temporal climatica", fig=fig, key=key, help_text="Comparacao entre risco medio e severidade ao longo do periodo selecionado.", height=360)
@@ -131,7 +130,7 @@ def render_operational_indicators(enriched_events: pd.DataFrame, alert_feed: pd.
 	fig.add_trace(go.Indicator(mode="gauge+number+delta", value=avg_risk, delta={"reference": 0.5}, title={"text": "Risco medio"}, gauge={"axis": {"range": [0, 1]}, "bar": {"color": SEMANTIC_COLORS["high"]}, "steps": [{"range": [0, 0.35], "color": "#eff6ff"}, {"range": [0.35, 0.75], "color": "#fef3c7"}, {"range": [0.75, 1.0], "color": "#fee2e2"}]}), row=1, col=1)
 	fig.add_trace(go.Indicator(mode="gauge+number+delta", value=critical_count, delta={"reference": max(total_events * 0.1, 1)}, title={"text": "Eventos criticos"}, gauge={"axis": {"range": [0, total_events]}, "bar": {"color": SEMANTIC_COLORS["critical"]}, "steps": [{"range": [0, total_events * 0.5], "color": "#f8fafc"}, {"range": [total_events * 0.5, total_events], "color": "#fee2e2"}]}), row=1, col=2)
 	fig.add_trace(go.Indicator(mode="gauge+number+delta", value=avg_confidence, delta={"reference": 0.7}, title={"text": "Confianca media"}, gauge={"axis": {"range": [0, 1]}, "bar": {"color": SEMANTIC_COLORS["info"]}, "steps": [{"range": [0, 0.5], "color": "#eff6ff"}, {"range": [0.5, 1.0], "color": "#dbeafe"}]}), row=1, col=3)
-	fig.update_layout(title="Indicadores executivos", height=260, margin=dict(l=8, r=8, t=40, b=8))
+	fig.update_layout(title="Indicadores executivos", height=260, margin={"l": 8, "r": 8, "t": 40, "b": 8})
 	render_plotly_panel(title="Indicadores", fig=fig, key=key, help_text=f"{len(alert_feed)} alertas no feed atual.", height=260)
 
 
@@ -142,7 +141,7 @@ def render_geographic_risk_map(enriched_events: pd.DataFrame, *, key: str, title
 		render_plotly_panel(title=title, fig=_empty_figure(title, "Sem coordenadas geograficas no recorte atual."), key=key, help_text=help_text, height=360)
 		return
 	fig = px.scatter_map(frame, lat="latitude", lon="longitude", color="risk_score", size="risk_score", size_max=18, zoom=2, color_continuous_scale=[[0.0, "#0f766e"], [0.5, "#f59e0b"], [1.0, "#b91c1c"]], hover_name="event_type", hover_data={"region": True, "state": True, "risk_score": ":.2f", "confidence": ":.2f", "severity": ":.2f"})
-	fig.update_layout(title=title, margin=dict(l=0, r=0, t=10, b=40), coloraxis_colorbar=dict(title="Risco"))
+	fig.update_layout(title=title, margin={"l": 0, "r": 0, "t": 10, "b": 40}, coloraxis_colorbar={"title": "Risco"})
 	render_plotly_panel(title=title, fig=fig, key=key, help_text=help_text, height=360, footer_gap_px=44)
 
 
@@ -152,8 +151,8 @@ def render_geospatial_heatmap(enriched_events: pd.DataFrame, *, key: str) -> Non
 	if frame.empty:
 		render_plotly_panel(title="Heatmap geografico", fig=_empty_figure("Heatmap geografico", "Sem coordenadas geograficas no recorte atual."), key=key, help_text="Ajuste o filtro de regiao ou periodo para obter pontos georreferenciados.", height=360)
 		return
-	fig = px.density_mapbox(frame, lat="latitude", lon="longitude", z=_numeric(frame, "risk_score"), radius=28, center=dict(lat=float(frame["latitude"].mean()), lon=float(frame["longitude"].mean())), zoom=2, mapbox_style="open-street-map", color_continuous_scale=[[0.0, "#ecfeff"], [0.4, "#67e8f9"], [0.7, "#f59e0b"], [1.0, "#b91c1c"]], hover_name="event_type", hover_data={"risk_score": ":.2f", "severity": ":.2f", "confidence": ":.2f"})
-	fig.update_layout(title="Heatmap geografico de risco", margin=dict(l=0, r=0, t=10, b=40))
+	fig = px.density_mapbox(frame, lat="latitude", lon="longitude", z=_numeric(frame, "risk_score"), radius=28, center={"lat": float(frame["latitude"].mean()), "lon": float(frame["longitude"].mean())}, zoom=2, mapbox_style="open-street-map", color_continuous_scale=[[0.0, "#ecfeff"], [0.4, "#67e8f9"], [0.7, "#f59e0b"], [1.0, "#b91c1c"]], hover_name="event_type", hover_data={"risk_score": ":.2f", "severity": ":.2f", "confidence": ":.2f"})
+	fig.update_layout(title="Heatmap geografico de risco", margin={"l": 0, "r": 0, "t": 10, "b": 40})
 	render_plotly_panel(title="Heatmap geografico", fig=fig, key=key, help_text="Mapa de densidade geoespacial para identificar concentracoes de severidade.", height=360, footer_gap_px=44)
 
 
@@ -164,7 +163,7 @@ def render_scatter_geo(enriched_events: pd.DataFrame, *, key: str) -> None:
 		render_plotly_panel(title="Scatter Geo", fig=_empty_figure("Scatter Geo", "Sem coordenadas geograficas no recorte atual."), key=key, help_text="Sem pontos geograficos suficientes para o scatter geo.", height=340)
 		return
 	fig = px.scatter_geo(frame, lat="latitude", lon="longitude", color="alert_level" if "alert_level" in frame.columns else None, size="risk_score", projection="natural earth", color_discrete_map=SEMANTIC_COLORS, hover_name="event_type", hover_data={"region": True, "state": True, "risk_score": ":.2f", "confidence": ":.2f"})
-	fig.update_layout(title="Scatter Geo operacional", geo=dict(showland=True, landcolor="#f8fafc"))
+	fig.update_layout(title="Scatter Geo operacional", geo={"showland": True, "landcolor": "#f8fafc"})
 	render_plotly_panel(title="Scatter Geo", fig=fig, key=key, help_text="Dispersao espacial com semantica de alerta e risco.", height=340, footer_gap_px=44)
 
 
@@ -204,7 +203,7 @@ def render_alert_spatial_distribution(alert_feed: pd.DataFrame, enriched_events:
 		hover_name=display_event_type,
 		hover_data=hover_data,
 	)
-	fig.update_layout(title="Distribuicao espacial de alertas", margin=dict(l=0, r=0, t=10, b=40))
+	fig.update_layout(title="Distribuicao espacial de alertas", margin={"l": 0, "r": 0, "t": 10, "b": 40})
 	render_plotly_panel(title="Distribuicao espacial de alertas", fig=fig, key=key, help_text="Cada ponto mostra a localizacao do alerta e seu nivel semantico.", height=340, footer_gap_px=44)
 
 
@@ -249,7 +248,7 @@ def render_rainfall_accumulation(enriched_events: pd.DataFrame, *, key: str) -> 
 	daily.loc[:, "cumulative_rainfall"] = daily["daily_rainfall"].cumsum()
 	fig = make_subplots(specs=[[{"secondary_y": True}]])
 	fig.add_trace(go.Bar(x=daily["date_bucket"], y=daily["daily_rainfall"], name="Chuva diaria", marker_color="#0ea5e9", hovertemplate="Data %{x|%d/%m/%Y}<br>Chuva diaria %{y:.1f} mm<extra></extra>"), secondary_y=False)
-	fig.add_trace(go.Scatter(x=daily["date_bucket"], y=daily["cumulative_rainfall"], name="Acumulado", mode="lines+markers", line=dict(color="#0f766e", width=3), hovertemplate="Data %{x|%d/%m/%Y}<br>Acumulado %{y:.1f} mm<extra></extra>"), secondary_y=True)
+	fig.add_trace(go.Scatter(x=daily["date_bucket"], y=daily["cumulative_rainfall"], name="Acumulado", mode="lines+markers", line={"color": "#0f766e", "width": 3}, hovertemplate="Data %{x|%d/%m/%Y}<br>Acumulado %{y:.1f} mm<extra></extra>"), secondary_y=True)
 	fig.update_layout(title="Acumulado de chuva", hovermode="x unified", legend_title_text="")
 	fig.update_yaxes(title_text="Chuva diaria (mm)", secondary_y=False)
 	fig.update_yaxes(title_text="Acumulado (mm)", secondary_y=True)
@@ -270,7 +269,7 @@ def render_fire_intensity(enriched_events: pd.DataFrame, *, key: str) -> None:
 	fire_trend = frame.groupby("date_bucket", as_index=False).agg(avg_brightness=("brightness", "mean"), avg_risk=("risk_score", "mean"), total_fires=("event_id", "count")).sort_values("date_bucket")
 	fig = make_subplots(specs=[[{"secondary_y": True}]])
 	fig.add_trace(go.Bar(x=fire_trend["date_bucket"], y=fire_trend["total_fires"], name="Focos", marker_color="#ea580c", hovertemplate="Data %{x|%d/%m/%Y}<br>Focos %{y}<extra></extra>"), secondary_y=False)
-	fig.add_trace(go.Scatter(x=fire_trend["date_bucket"], y=fire_trend["avg_brightness"], name="Brightness media", mode="lines+markers", line=dict(color="#b91c1c", width=3), hovertemplate="Data %{x|%d/%m/%Y}<br>Brightness %{y:.1f}<extra></extra>"), secondary_y=True)
+	fig.add_trace(go.Scatter(x=fire_trend["date_bucket"], y=fire_trend["avg_brightness"], name="Brightness media", mode="lines+markers", line={"color": "#b91c1c", "width": 3}, hovertemplate="Data %{x|%d/%m/%Y}<br>Brightness %{y:.1f}<extra></extra>"), secondary_y=True)
 	fig.update_layout(title="Intensidade de queimadas", hovermode="x unified", legend_title_text="")
 	fig.update_yaxes(title_text="Focos", secondary_y=False)
 	fig.update_yaxes(title_text="Brightness media", secondary_y=True)
@@ -306,8 +305,8 @@ def render_flood_forecast(enriched_events: pd.DataFrame, *, key: str) -> None:
 	frame.loc[:, "date_bucket"] = _date_series(frame).dt.floor("D")
 	trend = frame.groupby("date_bucket", as_index=False).agg(avg_flood_risk=("flood_risk_probability", "mean"), avg_risk=("risk_score", "mean"), total_events=("event_id", "count")).sort_values("date_bucket")
 	fig = go.Figure()
-	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_flood_risk"], name="Risco de enchente", mode="lines+markers", fill="tozeroy", line=dict(color="#0284c7", width=3), hovertemplate="Data %{x|%d/%m/%Y}<br>Risco %{y:.2f}<extra></extra>"))
-	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_risk"], name="Risco operacional", mode="lines", line=dict(color="#b91c1c", width=2, dash="dot"), hovertemplate="Data %{x|%d/%m/%Y}<br>Risco operacional %{y:.2f}<extra></extra>"))
+	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_flood_risk"], name="Risco de enchente", mode="lines+markers", fill="tozeroy", line={"color": "#0284c7", "width": 3}, hovertemplate="Data %{x|%d/%m/%Y}<br>Risco %{y:.2f}<extra></extra>"))
+	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_risk"], name="Risco operacional", mode="lines", line={"color": "#b91c1c", "width": 2, "dash": "dot"}, hovertemplate="Data %{x|%d/%m/%Y}<br>Risco operacional %{y:.2f}<extra></extra>"))
 	fig.update_layout(title="Previsao de enchentes", hovermode="x unified", legend_title_text="")
 	fig.update_xaxes(rangeslider_visible=True)
 	render_plotly_panel(title="Previsao de enchentes", fig=fig, key=key, help_text="Serie de previsao com leitura operacional e risco hidrologico estimado.", height=360)
@@ -322,7 +321,7 @@ def render_landslide_forecast(enriched_events: pd.DataFrame, *, key: str) -> Non
 	frame.loc[:, "date_bucket"] = _date_series(frame).dt.floor("D")
 	trend = frame.groupby("date_bucket", as_index=False).agg(avg_landslide_risk=("landslide_risk_probability", "mean"), avg_precipitation=("precipitation_mm", "mean"), avg_risk=("risk_score", "mean")).sort_values("date_bucket")
 	fig = make_subplots(specs=[[{"secondary_y": True}]])
-	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_landslide_risk"], name="Risco de deslizamento", mode="lines+markers", fill="tozeroy", line=dict(color="#7c3aed", width=3), hovertemplate="Data %{x|%d/%m/%Y}<br>Risco %{y:.2f}<extra></extra>"), secondary_y=False)
+	fig.add_trace(go.Scatter(x=trend["date_bucket"], y=trend["avg_landslide_risk"], name="Risco de deslizamento", mode="lines+markers", fill="tozeroy", line={"color": "#7c3aed", "width": 3}, hovertemplate="Data %{x|%d/%m/%Y}<br>Risco %{y:.2f}<extra></extra>"), secondary_y=False)
 	fig.add_trace(go.Bar(x=trend["date_bucket"], y=trend["avg_precipitation"], name="Chuva media", marker_color="#0ea5e9", opacity=0.45, hovertemplate="Data %{x|%d/%m/%Y}<br>Chuva %{y:.1f} mm<extra></extra>"), secondary_y=True)
 	fig.update_layout(title="Previsao de deslizamentos", hovermode="x unified", legend_title_text="")
 	fig.update_yaxes(title_text="Risco de deslizamento", secondary_y=False)

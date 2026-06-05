@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from typing import Any
+from uuid import uuid4
 
 from state.helpers import (
 	append_to_state_list,
@@ -14,11 +15,10 @@ from state.helpers import (
 	set_state_value_if_changed,
 )
 from state.models import DashboardFilterState, NavigationState, ThresholdState, UserPreferencesState
-from state.session_keys import SessionKey
-from utils.time_utils import utc_now
-from utils.config import get_settings
 from state.persistence import save_feedback
-from uuid import uuid4
+from state.session_keys import SessionKey
+from utils.config import get_settings
+from utils.time_utils import utc_now
 
 
 def set_selected_region(region: str) -> None:

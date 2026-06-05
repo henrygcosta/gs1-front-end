@@ -4,7 +4,15 @@ from __future__ import annotations
 
 import streamlit as st
 
-from state.models import AlertState, CacheState, DashboardFilterState, LoadingState, NavigationState, ThresholdState, UserPreferencesState
+from state.models import (
+	AlertState,
+	CacheState,
+	DashboardFilterState,
+	LoadingState,
+	NavigationState,
+	ThresholdState,
+	UserPreferencesState,
+)
 from state.session_keys import SessionKey
 
 
