@@ -75,7 +75,7 @@ def _normalize_climate_frame(frame: pd.DataFrame) -> pd.DataFrame:
 	result.loc[:, "record_type"] = "event"
 	risk_factors_source = result.get("risk_factors", pd.Series([()] * len(result), index=result.index))
 	result.loc[:, "risk_factors"] = risk_factors_source.apply(
-		lambda value: tuple(value) if isinstance(value, (list, tuple)) else ()
+		lambda value: tuple(value) if isinstance(value, list | tuple) else ()
 	)
 	result = _add_missing_columns(
 		result,

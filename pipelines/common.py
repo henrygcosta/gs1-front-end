@@ -56,7 +56,7 @@ def dataframe_cache_key(frame: pd.DataFrame) -> str:
 	for column in normalized.columns:
 		if normalized[column].dtype == "object":
 			normalized.loc[:, column] = normalized[column].map(
-				lambda value: repr(tuple(value)) if isinstance(value, (list, tuple)) else repr(value)
+				lambda value: repr(tuple(value)) if isinstance(value, list | tuple) else repr(value)
 			)
 	return f"{tuple(normalized.columns)}|{normalized.shape}|{pd.util.hash_pandas_object(normalized, index=True).sum()}"
 

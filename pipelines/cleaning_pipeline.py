@@ -50,7 +50,7 @@ def run_cleaning_pipeline(events: pd.DataFrame) -> pd.DataFrame:
 		]
 		risk_factors_source = cleaned.get("risk_factors", pd.Series([()] * len(cleaned), index=cleaned.index))
 		cleaned.loc[:, "risk_factors"] = risk_factors_source.apply(
-			lambda value: tuple(value) if isinstance(value, (list, tuple)) else ()
+			lambda value: tuple(value) if isinstance(value, list | tuple) else ()
 		)
 		cleaned = cleaned.sort_values(by=["timestamp", "severity", "confidence"], ascending=[False, False, False])
 		cleaned = cleaned.reset_index(drop=True)
