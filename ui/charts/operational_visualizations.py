@@ -20,6 +20,24 @@ SEMANTIC_COLORS = {
 
 DAY_ORDER = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
+_REGION_CODE_MAP: dict[str, str] = {
+    "Global": "BR",
+    "Brazil": "BR",
+    "Amazonas": "AM",
+    "Nordeste": "NE",
+    "Sudeste": "SE",
+    "Pantanal": "MT",
+    "Centro-Oeste": "CO",
+}
+
+
+def _macro_region_code(row: pd.Series) -> str | None:
+    """Return the macro-region code for a DataFrame row, or None if unknown."""
+    region = row.get("region", None)
+    if not isinstance(region, str):
+        return None
+    return _REGION_CODE_MAP.get(region, None)
+
 
 def _empty_figure(title: str, message: str) -> go.Figure:
 	"""Create a chart placeholder when a dataset is empty."""
