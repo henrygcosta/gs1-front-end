@@ -32,7 +32,7 @@ def select_queue(context: FeatureContext | None = None) -> pd.DataFrame:
 	sent_ids = set(get_sent_alerts())
 	history_ids = {str(item.get("alert_id", item.get("event_id", ""))) for item in get_feedback_history()}
 	if "alert_id" in queue.columns:
-		queue = queue.loc[~queue["alert_id"].astype(str).isin(approved_ids | sent_ids | dismissed_ids)].copy()
+		queue = queue.loc[~queue["alert_id"].astype(str).isin(sent_ids | dismissed_ids)].copy()
 		queue.loc[:, "decision_status"] = queue["alert_id"].astype(str).map(
 			lambda alert_id: "approved" if alert_id in approved_ids else "reviewed" if alert_id in reviewed_ids else "dismissed" if alert_id in dismissed_ids else "pending"
 		)
