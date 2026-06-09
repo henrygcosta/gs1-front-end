@@ -40,14 +40,16 @@ def run_cleaning_pipeline(events: pd.DataFrame) -> pd.DataFrame:
 			event_type=cleaned["event_type"].astype(str),
 			timestamp=pd.to_datetime(cleaned["timestamp"], utc=True, errors="coerce"),
 		)
-		cleaned = cleaned.dropna(subset=["event_id", "timestamp", "latitude", "longitude"])
+		cleaned = cleaned.dropna(subset=["event_id", "timestamp"])
 		cleaned = cleaned.drop_duplicates(subset=["source", "event_id"])
 		cleaned.loc[:, "severity"] = clamp_series(cleaned["severity"])
 		cleaned.loc[:, "confidence"] = clamp_series(cleaned["confidence"])
-		cleaned = cleaned[
-			cleaned["latitude"].between(-90, 90, inclusive="both")
-			& cleaned["longitude"].between(-180, 180, inclusive="both")
-		]
+		has_coords = cleaned["latitude"].notna() & cleaned["longitude"].notna()
+		invalid_coords = has_coords & (
+			~cleaned["latitude"].between(-90, 90, inclusive="both")
+			| ~cleaned["longitude"].between(-180, 180, inclusive="both")
+		)
+		cleaned = cleaned.loc[~invalid_coords].copy()
 		risk_factors_source = cleaned.get("risk_factors", pd.Series([()] * len(cleaned), index=cleaned.index))
 		cleaned.loc[:, "risk_factors"] = risk_factors_source.apply(
 			lambda value: tuple(value) if isinstance(value, list | tuple) else ()
