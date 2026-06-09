@@ -36,7 +36,7 @@ def _date_mask(frame: pd.DataFrame, start: str | None, end: str | None) -> pd.Se
 	if frame.empty:
 		return pd.Series(dtype=bool, index=frame.index)
 	def _parse_filter_date(value: str | None) -> pd.Timestamp:
-		return pd.to_datetime(value, format="%d-%m-%Y", utc=True, errors="coerce")
+		return pd.to_datetime(value, utc=True, errors="coerce")
 
 	if "timestamp" in frame.columns:
 		timestamps = pd.to_datetime(frame["timestamp"], utc=True, errors="coerce")
