@@ -3,9 +3,8 @@
 from __future__ import annotations
 
 import pandas as pd
-import streamlit as st
 
-from features.common import FEATURE_CACHE_KWARGS, FeatureContext
+from features.common import FeatureContext
 from pipelines.alerting_pipeline import build_alert_feed
 from pipelines.risk_scoring_pipeline import run_risk_scoring_pipeline
 from state.view_model import DashboardFilterViewModel
@@ -67,7 +66,6 @@ def filter_operational_frame(frame: pd.DataFrame, filters: DashboardFilterViewMo
 	return result.reset_index(drop=True)
 
 
-@st.cache_data(show_spinner=False, ttl=300, hash_funcs=FEATURE_CACHE_KWARGS)
 def build_visible_context(context: FeatureContext, filters: DashboardFilterViewModel) -> FeatureContext:
 	"""Build a filtered feature context that mirrors the active UI state."""
 	raw_events = filter_operational_frame(context.raw_events, filters)

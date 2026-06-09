@@ -36,7 +36,7 @@ def _macro_region_code(row: pd.Series) -> str | None:
     region = row.get("region", None)
     if not isinstance(region, str):
         return None
-    return _REGION_CODE_MAP.get(region, None)
+    return _REGION_CODE_MAP.get(region)
 
 
 def _empty_figure(title: str, message: str) -> go.Figure:

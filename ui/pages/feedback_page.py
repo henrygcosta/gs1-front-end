@@ -140,7 +140,7 @@ def render_feedback_page() -> None:
 					button_columns = st.columns(2)
 					with button_columns[0]:
 						if st.button("Aprovar alerta", key=f"approve_{alert_id}", use_container_width=True, disabled=not confirm_action):
-							_submit_moderation(alert, "approve", observations, confirm_send=False)
+							_submit_moderation(alert, "approve", observations, confirm_send=True)
 					with button_columns[1]:
 						if st.button("Rejeitar alerta", key=f"reject_{alert_id}", use_container_width=True, disabled=not confirm_action):
 							_submit_moderation(alert, "dismiss", observations, confirm_send=False)
